@@ -1,4 +1,4 @@
-package com.ezioshiki.koma2;
+package com.ezioshiki.koma2.presentation.view.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.ezioshiki.koma2.dummy.DummyContent;
+import com.ezioshiki.koma2.presentation.view.dummy.DummyContent;
 
 /**
  * A list fragment representing a list of Projs. This fragment

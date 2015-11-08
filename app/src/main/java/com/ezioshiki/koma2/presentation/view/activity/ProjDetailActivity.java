@@ -1,13 +1,15 @@
-package com.ezioshiki.koma2;
+package com.ezioshiki.koma2.presentation.view.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.view.View;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.ezioshiki.koma2.R;
+import com.ezioshiki.koma2.presentation.view.fragment.ProjDetailFragment;
 
 /**
  * An activity representing a single Proj detail screen. This
@@ -18,7 +20,7 @@ import android.view.MenuItem;
  * This activity is mostly just a 'shell' activity containing nothing
  * more than a {@link ProjDetailFragment}.
  */
-public class ProjDetailActivity extends AppCompatActivity {
+public class ProjDetailActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

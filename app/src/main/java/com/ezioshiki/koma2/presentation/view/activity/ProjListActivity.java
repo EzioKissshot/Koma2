@@ -1,12 +1,22 @@
-package com.ezioshiki.koma2;
+package com.ezioshiki.koma2.presentation.view.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import com.ezioshiki.koma2.R;
+import com.ezioshiki.koma2.presentation.KomaApplication;
+import com.ezioshiki.koma2.presentation.navigation.Navigator;
+import com.ezioshiki.koma2.presentation.view.fragment.ProjDetailFragment;
+import com.ezioshiki.koma2.presentation.view.fragment.ProjListFragment;
+
+import javax.inject.Inject;
+
+import timber.log.Timber;
 
 
 /**
@@ -25,7 +35,7 @@ import android.view.View;
  * {@link ProjListFragment.Callbacks} interface
  * to listen for item selections.
  */
-public class ProjListActivity extends AppCompatActivity
+public class ProjListActivity extends BaseActivity
         implements ProjListFragment.Callbacks {
 
     /**
@@ -34,10 +44,22 @@ public class ProjListActivity extends AppCompatActivity
      */
     private boolean mTwoPane;
 
+
+    @Inject
+    Context mContext;
+    @Inject
+    Navigator mNavigator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proj_app_bar);
+
+        KomaApplication.getComponent(this).inject(this);
+
+
+        Timber.d("context in activity " + mContext.toString());
+        Timber.d("navigator in activity "+ mNavigator.toString());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

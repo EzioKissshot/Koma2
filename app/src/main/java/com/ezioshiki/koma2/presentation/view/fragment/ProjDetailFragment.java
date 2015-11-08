@@ -1,4 +1,4 @@
-package com.ezioshiki.koma2;
+package com.ezioshiki.koma2.presentation.view.fragment;
 
 import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -9,7 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ezioshiki.koma2.dummy.DummyContent;
+import com.ezioshiki.koma2.R;
+import com.ezioshiki.koma2.presentation.view.dummy.DummyContent;
+import com.ezioshiki.koma2.presentation.view.activity.ProjDetailActivity;
+import com.ezioshiki.koma2.presentation.view.activity.ProjListActivity;
 
 /**
  * A fragment representing a single Proj detail screen.

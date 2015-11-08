@@ -1,4 +1,4 @@
-package com.ezioshiki.koma2.dummy;
+package com.ezioshiki.koma2.presentation.view.dummy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

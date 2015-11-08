@@ -4,12 +4,13 @@
 
     <application
         android:allowBackup="true"
+        android:name=".presentation.KomaApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".ProjListActivity"
+            android:name=".presentation.view.activity.ProjListActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -19,13 +20,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ProjDetailActivity"
+            android:name=".presentation.view.activity.ProjDetailActivity"
             android:label="@string/title_proj_detail"
-            android:parentActivityName=".ProjListActivity"
+            android:parentActivityName=".presentation.view.activity.ProjListActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ProjListActivity" />
+                android:value=".presentation.view.activity.ProjListActivity" />
         </activity>
     </application>
 
