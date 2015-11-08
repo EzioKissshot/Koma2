@@ -1,5 +1,6 @@
 package com.ezioshiki.koma2.presentation.view.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -21,6 +22,8 @@ import com.ezioshiki.koma2.presentation.view.fragment.ProjDetailFragment;
  * more than a {@link ProjDetailFragment}.
  */
 public class ProjDetailActivity extends BaseActivity {
+
+    private static final String INTENT_PARAM_PROJ_ID = "org.ezioshiki.koma2.INTENT_PARAM_PROJ_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,5 +81,12 @@ public class ProjDetailActivity extends BaseActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public static Intent getCallingIntent(Context context, int projId) {
+        Intent intent = new Intent(context,ProjDetailActivity.class);
+        intent.putExtra(INTENT_PARAM_PROJ_ID,projId);
+
+        return intent;
     }
 }

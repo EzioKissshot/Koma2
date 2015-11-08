@@ -3,8 +3,8 @@
     package="com.ezioshiki.koma2" >
 
     <application
-        android:allowBackup="true"
         android:name=".presentation.KomaApplication"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -27,6 +27,8 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".presentation.view.activity.ProjListActivity" />
+        </activity>
+        <activity android:name=".presentation.view.activity.LoginActivity" >
         </activity>
     </application>
 

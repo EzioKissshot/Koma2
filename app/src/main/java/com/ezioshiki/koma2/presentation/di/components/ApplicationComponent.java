@@ -4,8 +4,10 @@ import android.content.Context;
 
 import com.ezioshiki.koma2.presentation.di.modules.ApplicationModule;
 import com.ezioshiki.koma2.presentation.navigation.Navigator;
-import com.ezioshiki.koma2.presentation.view.activity.BaseActivity;
+import com.ezioshiki.koma2.presentation.view.activity.ProjListActivity;
 import com.google.gson.Gson;
+
+import javax.inject.Singleton;
 
 import dagger.Component;
 
@@ -14,12 +16,14 @@ import dagger.Component;
  */
 
 @Component(modules = ApplicationModule.class)
+@Singleton
 public interface ApplicationComponent {
 
-    void inject(BaseActivity activity);
+    void inject(ProjListActivity activity);
 
     Context context();
     Navigator navigator();
     Gson gson();
+
 
 }

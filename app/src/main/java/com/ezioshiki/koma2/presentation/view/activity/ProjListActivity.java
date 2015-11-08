@@ -11,12 +11,11 @@ import android.view.View;
 import com.ezioshiki.koma2.R;
 import com.ezioshiki.koma2.presentation.KomaApplication;
 import com.ezioshiki.koma2.presentation.navigation.Navigator;
+import com.ezioshiki.koma2.presentation.presenter.ProjListPresenter;
 import com.ezioshiki.koma2.presentation.view.fragment.ProjDetailFragment;
 import com.ezioshiki.koma2.presentation.view.fragment.ProjListFragment;
 
 import javax.inject.Inject;
-
-import timber.log.Timber;
 
 
 /**
@@ -45,10 +44,11 @@ public class ProjListActivity extends BaseActivity
     private boolean mTwoPane;
 
 
-    @Inject
-    Context mContext;
+
     @Inject
     Navigator mNavigator;
+    @Inject
+    ProjListPresenter mProjListPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,24 +56,15 @@ public class ProjListActivity extends BaseActivity
         setContentView(R.layout.activity_proj_app_bar);
 
         KomaApplication.getComponent(this).inject(this);
+        mProjListPresenter.checkNavigation(this);
+        setupToolbar();
+        setupFab();
+        checkPhoneOrTable();
 
+        // TODO: If exposing deep links into your app, handle intents here.
+    }
 
-        Timber.d("context in activity " + mContext.toString());
-        Timber.d("navigator in activity "+ mNavigator.toString());
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+    private void checkPhoneOrTable() {
         if (findViewById(R.id.proj_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-large and
@@ -87,8 +78,23 @@ public class ProjListActivity extends BaseActivity
                     .findFragmentById(R.id.proj_list))
                     .setActivateOnItemClick(true);
         }
+    }
 
-        // TODO: If exposing deep links into your app, handle intents here.
+    private void setupFab() {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle(getTitle());
     }
 
     /**
@@ -116,5 +122,9 @@ public class ProjListActivity extends BaseActivity
             detailIntent.putExtra(ProjDetailFragment.ARG_ITEM_ID, id);
             startActivity(detailIntent);
         }
+    }
+
+    public static Intent getCallingIntent(Context context) {
+        return new Intent(context,ProjListActivity.class);
     }
 }

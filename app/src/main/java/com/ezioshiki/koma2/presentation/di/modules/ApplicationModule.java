@@ -34,12 +34,13 @@ public class ApplicationModule {
     Navigator provideNavigator(){
         return new Navigator();
     }
-
     @Provides
     @Singleton
     Gson provideGson(){
         return new Gson();
     }
+
+
 
     //todo: add more Provider
 }
